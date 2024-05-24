@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Recommendation System </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>Film Fusion - Movie Recommender</h1>
+    <div id="content">
+    <form action="/recommend" method="post">
+      <label for="title">Enter movie title:</label>
+      <input type="text" id="title" name="title" required>
+      <button type="submit">Recommends</button>
+    </form></div>
+    <!-- These templating engines are used in web development frameworks to generate dynamic HTML. -->
+    {% if recommendations %}
+      <div id="recommendations">
+        <h2>Recommendations:</h2>
+        <ul>
+          {% for recommendation in recommendations %}
+            <li>{{ recommendation }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </body>
+</html>
